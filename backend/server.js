@@ -8,6 +8,7 @@ const { initDatabase } = require('./database');
 
 const app = express();
 const PORT = process.env.PORT || 5002;
+console.log('PORT env variable:', process.env.PORT);
 
 // Middleware
 app.use(cors({
