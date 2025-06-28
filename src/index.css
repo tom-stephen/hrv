@@ -5,9 +5,36 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #f5f5f5;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/* Mobile viewport optimization */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+/* Prevent horizontal scroll on mobile */
+body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* Touch-friendly tap targets */
+button, a, [role="button"] {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
 }
