@@ -34,8 +34,15 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../build', 'index.html'));
 });
 
-// Initialize database
-initDatabase();
+// Initialize database with detailed logging
+console.log('About to initialize database...');
+initDatabase()
+  .then(() => {
+    console.log('Database initialized!');
+  })
+  .catch(err => {
+    console.error('Database init error:', err);
+  });
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
