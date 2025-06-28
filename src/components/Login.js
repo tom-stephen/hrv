@@ -36,7 +36,7 @@ const Login = () => {
   const [signUpLoading, setSignUpLoading] = useState(false);
   const navigate = useNavigate();
 
-  const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5002';
+  const API_URL = process.env.REACT_APP_API_URL || '';
 
   const handleLogin = async (e) => {
     e.preventDefault();

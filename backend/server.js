@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 const authRoutes = require('./routes/auth');
 const hrvRoutes = require('./routes/hrv');
 const { initDatabase } = require('./database');
@@ -15,14 +16,22 @@ app.use(cors({
 }));
 app.use(express.json());
 
+// Serve static files from React build
+app.use(express.static(path.join(__dirname, '../build')));
+
+// API Routes
+app.use('/api/auth', authRoutes);
+app.use('/api/hrv', hrvRoutes);
+
 // Health check endpoint
 app.get('/api/health', (req, res) => {
   res.json({ status: 'OK', timestamp: new Date().toISOString() });
 });
 
-// Routes
-app.use('/api/auth', authRoutes);
-app.use('/api/hrv', hrvRoutes);
+// Handle React routing, return all requests to React app
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../build', 'index.html'));
+});
 
 // Initialize database
 initDatabase();
