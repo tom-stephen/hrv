@@ -4,7 +4,7 @@
   "description": "HRV Tracker for Athletes",
   "main": "backend/server.js",
   "scripts": {
-    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "start": "node backend/server.js",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "server": "cd backend && npm start",
     "client": "react-scripts start",
